@@ -98,7 +98,7 @@
                                             <td><c:out value="${goal.goaldescription}"/></td>
                                             <td><c:out value="${goal.goalsCategoryid.name}"/></td>
                                             <td><c:out value="${goal.booksid.name}"/></td>
-                                            <td></td>
+                                            <td><c:out value="${goal.status}" /></td>
                                             <th>
                                                 <a href="books?action=view&id=<c:out value="${book.id}"/>" class="btn btn-default btn-round">
                                                 View

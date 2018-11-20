@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Goals.findByPriority", query = "SELECT g FROM Goals g WHERE g.priority = :priority")
     , @NamedQuery(name = "Goals.findByStartdate", query = "SELECT g FROM Goals g WHERE g.startdate = :startdate")
     , @NamedQuery(name = "Goals.findByDuedate", query = "SELECT g FROM Goals g WHERE g.duedate = :duedate")
-    , @NamedQuery(name = "Goals.findByGoaldescription", query = "SELECT g FROM Goals g WHERE g.goaldescription = :goaldescription")})
+    , @NamedQuery(name = "Goals.findByGoaldescription", query = "SELECT g FROM Goals g WHERE g.goaldescription = :goaldescription")
+    , @NamedQuery(name = "Goals.findByStatus", query = "SELECT g FROM Goals g WHERE g.status = :status")})
 public class Goals implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,16 +65,18 @@ public class Goals implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "startdate")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date startdate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "duedate")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date duedate;
     @Size(max = 2000)
     @Column(name = "goaldescription")
     private String goaldescription;
+    @Column(name = "status")
+    private String status;
     @JoinColumn(name = "Booksid", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Books booksid;
@@ -151,6 +154,14 @@ public class Goals implements Serializable {
         this.goaldescription = goaldescription;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Books getBooksid() {
         return booksid;
     }
@@ -174,7 +185,7 @@ public class Goals implements Serializable {
     public void setGoalsCategoryid(Goalscategory goalsCategoryid) {
         this.goalsCategoryid = goalsCategoryid;
     }
-
+    
     public String getStartDateFormatted() {
         return startDateFormatted;
     }
@@ -203,6 +214,7 @@ public class Goals implements Serializable {
         startDateFormatted = formatter.format(startdate);
         dueDateFormatted = formatter.format(duedate);
     }
+
 
     @Override
     public int hashCode() {

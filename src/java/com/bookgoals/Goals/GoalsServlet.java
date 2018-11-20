@@ -18,7 +18,9 @@ import com.bookgoals.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -211,6 +213,14 @@ public class GoalsServlet extends HttpServlet {
                 goal.setBooksid(booksDAO.getBook(goalBookIdInt));
                 goal.setGoalsCategoryid(goalsCategoryDAO.getGoalscategory((goalCategoryIdInt)));
                 goal.setUsersname(usersDAO.getUsers("admin"));
+                
+                // set status of goal to "In progress" is start date and today date are the same
+                Date todayDate = new Date();
+                if(todayDate.compareTo(todayDate) == 0) {
+                    goal.setStatus(GoalsStatus.IN_PROGRESS);
+                } else {
+                    goal.setStatus(GoalsStatus.PENDING);
+                }
                 
                 // Persist Goal to Database
                 goalsDAO.addGoal(goal);
