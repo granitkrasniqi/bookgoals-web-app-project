@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goals/dao/impl/GoalsDAOImpl.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Books/dao/impl/BooksDAOImpl.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goals/dao/GoalsDAO.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goalscategory/dao/GoalscategoryDAO.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/web/WEB-INF/jsp/view/books/listBooks.jsp</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goals/GoalsException.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Books/BooksServlet.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/entities/Books.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Authors/dao/impl/AuthorsDAOImpl.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/web/WEB-INF/jsp/view/books/addBook.jsp</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/web/WEB-INF/jsp/view/goals/addGoal.jsp</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Books/BookResource.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/entities/Bookscategory.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Authors/AuthorsServlet.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Bookscategory/dao/impl/BookscategoryDAOFactory.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Bookscategory/dao/impl/BookscategoryDAOImpl.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/entities/Goalscategory.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/utils/Utils.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/entities/Goals.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Books/dao/BooksDAO.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Authors/dao/AuthorsDAO.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goals/GoalsServlet.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/utils/DefaultUtil.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Goalscategory/dao/impl/GoalscategoryDAOImpl.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/utils/UtilsProducer.java</file>
+            <file>file:/C:/Users/Granit%20Krasniqi/Documents/NetBeansProjects/BookGoals/src/java/com/bookgoals/Booksauthors/dao/impl/BooksAuthorsDAOImpl.java</file>
+        </group>
+    </open-files>
+</project-private>
