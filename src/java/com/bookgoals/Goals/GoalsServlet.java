@@ -18,6 +18,7 @@ import com.bookgoals.utils.Utils;
 import com.mysql.jdbc.StringUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,9 +77,6 @@ public class GoalsServlet extends HttpServlet {
                 break;
             case "edit":
                 editGoalPage(request, response);
-                break;
-            case "delete":
-                deleteGoalForm(request, response);
                 break;
             case "view":
                 viewGoalPage(request, response);
@@ -139,10 +137,6 @@ public class GoalsServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void deleteGoalForm(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private void viewGoalPage(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -169,7 +163,9 @@ public class GoalsServlet extends HttpServlet {
         String goalName     = request.getParameter("goal-name");
         String goalPriority = request.getParameter("goal-priority");
         String startDate    = request.getParameter("start-date");
+        System.out.println("startDate str = " + startDate);
         String dueDate      = request.getParameter("due-date");
+        System.out.println("due-date str = " + dueDate);
         String goalDescription = request.getParameter("goal-description");
         String goalCategoryId  = request.getParameter("goal-category");
         String goalBookId      = request.getParameter("goal-book");
@@ -200,12 +196,26 @@ public class GoalsServlet extends HttpServlet {
         }
         
         Date todayDate   = new Date();
-        Date startDateDT = utils.dateFromString(dueDate);
-        Date dueDateDT   = utils.dateFromString(dueDate);
+        Date startDateDT = null;
+        Date dueDateDT   = null;
         
-        if(dueDateDT.compareTo(startDateDT) < 0) {
-            errors.add("Due date can't be before start date");
+        try {
+            startDateDT = utils.dateFromString(startDate);
+            dueDateDT   = utils.dateFromString(dueDate);
+        } catch (ParseException e) {
+            errors.add("Dates are in wrong format");
         }
+        
+        
+        System.out.println("startDateDT = " + startDateDT);
+        System.out.println("dueDateDT = " + dueDateDT);
+        
+        if (startDateDT != null && dueDateDT != null) {
+            if (dueDateDT.compareTo(startDateDT) < 0) {
+                errors.add("You can't set due date before start date");
+            }
+        }
+        
         
         try {
             if (errors.isEmpty()) {
@@ -218,8 +228,8 @@ public class GoalsServlet extends HttpServlet {
                 Goals goal = new Goals();
                 goal.setName(goalName);
                 goal.setPriority(goalPriority);
-                goal.setStartdate(utils.dateFromString(startDate));
-                goal.setDuedate(utils.dateFromString(dueDate));
+                goal.setStartdate(startDateDT);
+                goal.setDuedate(dueDateDT);
                 goal.setGoaldescription(goalDescription);
                 goal.setBooksid(booksDAO.getBook(goalBookIdInt));
                 goal.setGoalsCategoryid(goalsCategoryDAO.getGoalscategory((goalCategoryIdInt)));
@@ -245,7 +255,7 @@ public class GoalsServlet extends HttpServlet {
         } catch (GoalsException e) {
             request.setAttribute("errors", errors);
             request.setAttribute("sucess", false);
-            request.getRequestDispatcher(response.encodeURL(UrlUtils.ADD_BOOK_URL)).forward(request, response);
+            request.getRequestDispatcher(response.encodeURL(UrlUtils.ADD_GOAL_URL)).forward(request, response);
         }
     }
 

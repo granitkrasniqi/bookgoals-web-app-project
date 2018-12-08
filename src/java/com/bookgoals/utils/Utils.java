@@ -5,6 +5,8 @@
  */
 package com.bookgoals.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Calendar;
@@ -17,14 +19,8 @@ import java.util.GregorianCalendar;
  */
 public class Utils {
     
-    public Date dateFromString(String dateStr) {
-        String[] dateSplited = dateStr.split("/");
-        Integer month = Integer.parseInt(dateSplited[0]);
-        Integer day = Integer.parseInt(dateSplited[1]);
-        Integer year = Integer.parseInt(dateSplited[2]);
-        Date date = new Calendar.Builder()
-                .setDate(year, month, day)
-                .build().getTime();
+    public Date dateFromString(String dateStr) throws ParseException {
+        Date date = new SimpleDateFormat("MM/dd/yyyy").parse(dateStr);
         return date;
     }
 }
