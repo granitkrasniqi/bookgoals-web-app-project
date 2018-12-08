@@ -79,9 +79,6 @@ public class BooksServlet extends HttpServlet {
             case "edit":
                 editBookPage(request, response);
                 break;
-            case "delete":
-                deleteBookForm(request, response);
-                break;
             case "view":
                 viewBookPage(request, response);
                 break;
@@ -207,10 +204,6 @@ public class BooksServlet extends HttpServlet {
         request.getRequestDispatcher(response.encodeURL(UrlUtils.LIST_BOOKS_URL)).forward(request, response);
     }
 
-    private void deleteBookForm(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        
-    }
     
     /*
         This method should add a book when requested from a form (POST)

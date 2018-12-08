@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BookGoals - View Goals List</title>
+    <title>BookGoals - Goals List</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -100,16 +100,16 @@
                                             <td><c:out value="${goal.booksid.name}"/></td>
                                             <td><c:out value="${goal.status}" /></td>
                                             <th>
-                                                <a href="books?action=view&id=<c:out value="${book.id}"/>" class="btn btn-default btn-round">
+                                                <a href="goals?action=view&id=<c:out value="${goal.id}"/>" class="btn btn-default btn-round">
                                                 View
                                                 </a>
-                                                <a href="books?action=edit&id=<c:out value="${book.id}"/>" class="btn btn-primary btn-round">Edit</a>
+                                                <a href="goals?action=edit&id=<c:out value="${goal.id}"/>" class="btn btn-primary btn-round">Edit</a>
                                                 <button type="submit"  rel="tooltip" class="btn btn-danger btn-round" data-original-title="" title="" 
-                                                        data-toggle="modal" data-target="#deleteConfModal<c:out value="${book.id}" />">Delete</button>
+                                                        data-toggle="modal" data-target="#deleteConfModal<c:out value="${goal.id}" />">Delete</button>
                                                  </th>
                                         </tr>
                                         <!-- action forms -->
-                                        <form action="books" method="post" id="deleteForm<c:out value="${goal.id}" />">
+                                        <form action="goals" method="post" id="deleteForm<c:out value="${goal.id}" />">
                                             <input type="hidden" name="mainAction" value="mainDelete"/>
                                             <input type="hidden" name="goalId" value="<c:out value="${goal.id}"/>"/>
                                         </form>

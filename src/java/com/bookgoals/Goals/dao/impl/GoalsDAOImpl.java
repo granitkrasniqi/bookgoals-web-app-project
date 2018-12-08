@@ -42,7 +42,7 @@ public class GoalsDAOImpl implements GoalsDAO {
 
     @Override
     public void deleteGoal(Goals goal) {
-        em.remove(goal);
+        deleteGoal(goal.getId());
     }
 
     @Override

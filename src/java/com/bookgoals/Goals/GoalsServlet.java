@@ -165,6 +165,7 @@ public class GoalsServlet extends HttpServlet {
         // List of errors that should be showed to the user
         ArrayList<String> errors = new ArrayList<>();
         
+        // Get All Parameters from Form
         String goalName     = request.getParameter("goal-name");
         String goalPriority = request.getParameter("goal-priority");
         String startDate    = request.getParameter("start-date");
@@ -173,6 +174,7 @@ public class GoalsServlet extends HttpServlet {
         String goalCategoryId  = request.getParameter("goal-category");
         String goalBookId      = request.getParameter("goal-book");
         
+        // Test parameters
         if(StringUtils.isNullOrEmpty(goalName)) {
             errors.add("Goal name is empty");
         }
@@ -197,9 +199,18 @@ public class GoalsServlet extends HttpServlet {
             errors.add("Goal book is not selected");
         }
         
+        Date todayDate   = new Date();
+        Date startDateDT = utils.dateFromString(dueDate);
+        Date dueDateDT   = utils.dateFromString(dueDate);
+        
+        if(dueDateDT.compareTo(startDateDT) < 0) {
+            errors.add("Due date can't be before start date");
+        }
+        
         try {
             if (errors.isEmpty()) {
                 
+                // Parse needed Strings to Integer
                 Integer goalBookIdInt = Integer.parseInt(goalBookId);
                 Integer goalCategoryIdInt = Integer.parseInt(goalCategoryId);
                 
@@ -215,7 +226,7 @@ public class GoalsServlet extends HttpServlet {
                 goal.setUsersname(usersDAO.getUsers("admin"));
                 
                 // set status of goal to "In progress" is start date and today date are the same
-                Date todayDate = new Date();
+                
                 if(todayDate.compareTo(todayDate) == 0) {
                     goal.setStatus(GoalsStatus.IN_PROGRESS);
                 } else {
@@ -232,27 +243,33 @@ public class GoalsServlet extends HttpServlet {
                 throw new GoalsException();
             }
         } catch (GoalsException e) {
-            
+            request.setAttribute("errors", errors);
+            request.setAttribute("sucess", false);
+            request.getRequestDispatcher(response.encodeURL(UrlUtils.ADD_BOOK_URL)).forward(request, response);
         }
-        
-        
-        System.out.println("goalName = " + goalName);
-        System.out.println("goalPriority = " + goalPriority);
-        System.out.println("startDate = " + startDate);
-        System.out.println("dueDate = " + dueDate);
-        System.out.println("goalDescription = " + goalDescription);
-        System.out.println("goalCategoryId = " + goalCategoryId);
-        System.out.println("goalBookId = " + goalBookId);
-        
-        
     }
 
     private void editGoal(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void deleteGoal(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void deleteGoal(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        // Get goal id from form parameter
+        String goalId = request.getParameter("goalId");
+        Integer goalIdInt = Integer.parseInt(goalId);
+        // Retrieve goal entity
+        Goals goal = goalsDAO.getGoal(goalIdInt);
+        
+        // Delete goal entity from database (Goals table)
+        goalsDAO.deleteGoal(goal);
+        
+        
+        request.setAttribute("goalName", goal.getName());
+        request.setAttribute("sucessDelete", true);
+        
+        // Dispatch to List Goals Page
+        listGoalsPage(request, response);
     }
 
 
